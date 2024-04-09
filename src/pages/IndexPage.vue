@@ -1,12 +1,13 @@
 <template>
   <q-page class="flex flex-center">
-    <button @click="pegarItens">Pegar</button>
-    <button @click="criarItens">Postar</button>
+    <button @click="getItens">Get</button>
+    <button @click="createItens">Post</button>
     <img
       alt="Quasar logo"
       src="~assets/quasar-logo-vertical.svg"
       style="width: 200px; height: 200px"
     >
+    {{ store.getters }}
   </q-page>
 </template>
 
@@ -15,10 +16,13 @@ defineOptions({
   name: 'IndexPage'
 })
 
-import instance from 'src/services/EventService'
+import { api } from 'src/boot/axios'
+import { useStore } from 'vuex'
 
-function pegarItens () {
-  instance.get('teste/')
+const store = useStore()
+
+function getItens () {
+  api.get('test')
     .then(res => {
       console.log('Deu certo graças a Deus!', res.data)
     })
@@ -26,10 +30,11 @@ function pegarItens () {
       console.error('Deu ruuuuuim!', error)
     })
 }
-function criarItens () {
-  const postData = { testeee: 'teste' }
 
-  instance.post('teste/', postData)
+function createItens () {
+  const postData = { post: 'hey there' }
+
+  api.post('posts', postData)
     .then(res => {
       console.log('Deu bom!', res.data)
     })
