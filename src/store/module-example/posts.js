@@ -4,12 +4,6 @@ const state = {
   posts: []
 }
 
-const getters = {
-  getPosts: state => state.posts,
-
-  getPostById: state => id => state.posts.find(post => post.id === id)
-}
-
 const mutations = {
   setPosts (state, posts) {
     state.posts = posts
@@ -24,7 +18,7 @@ const mutations = {
 
     if (~index) state.posts[index] = updatedPost
   },
-  
+
   removePost (state, postId) {
     state.posts = state.posts.filter(({ id }) => id !== postId)
   }
@@ -75,6 +69,5 @@ export default {
   namespaced: true,
   state,
   mutations,
-  actions,
-  getters
+  actions
 }

@@ -1,4 +1,31 @@
 {
-  "authors": [],
+  "authors": [
+    {
+      "name": "Erick",
+      "email": "erick.costa@bild.com.br",
+      "test": "teste"
+    },
+    {
+      "newTest": "Mudei de novo",
+      "newItem": "Mudei",
+      "id": "b646"
+    },
+    {
+      "id": "3862",
+      "newTest": "teste2"
+    },
+    {
+      "id": "0880",
+      "newTest": "teste2"
+    },
+    {
+      "id": "b4e5",
+      "newTest": "teste2"
+    },
+    {
+      "id": "4727",
+      "newTest": "teste2"
+    }
+  ],
   "posts": []
 }
