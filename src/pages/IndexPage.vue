@@ -7,7 +7,6 @@
       src="~assets/quasar-logo-vertical.svg"
       style="width: 200px; height: 200px"
     >
-    {{ store.getters }}
   </q-page>
 </template>
 
@@ -17,12 +16,10 @@ defineOptions({
 })
 
 import { api } from 'src/boot/axios'
-import { useStore } from 'vuex'
-
-const store = useStore()
+import { mapActions, mapState } from 'vuex'
 
 function getItens () {
-  api.get('test')
+  api.get('authors')
     .then(res => {
       console.log('Deu certo graças a Deus!', res.data)
     })

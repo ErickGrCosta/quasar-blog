@@ -24,7 +24,7 @@ const mutations = {
 
     if (~index) state.posts[index] = updatedPost
   },
-
+  
   removePost (state, postId) {
     state.posts = state.posts.filter(({ id }) => id !== postId)
   }

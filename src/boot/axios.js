@@ -8,12 +8,7 @@ import axios from 'axios'
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({
-  baseURL: 'http://localhost:3000/',
-  withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
+  baseURL: 'http://localhost:3000/'
 })
 
 export default boot(({ app }) => {
