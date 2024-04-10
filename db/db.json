@@ -1,10 +1,4 @@
 {
-  "teste": {
-    "teste1": ["daora"],
-    "teste2": ["bem louco", "interessante"],
-    "teste3": "a"
-  },
-  "posts": {
-
-  }
+  "authors": [],
+  "posts": []
 }
