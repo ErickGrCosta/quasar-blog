@@ -3,8 +3,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name: 'postsList', component: () => import('pages/PostsList.vue') },
-      { path: '/create-author', name: 'createAuthor', component: () => import('pages/PostsAuthor.vue') }
+      { path: '', name: 'PostsList', component: () => import('pages/PostsList.vue') },
+      { path: '/create-author', name: 'CreateAuthor', component: () => import('pages/AuthorForm.vue') }
     ]
   },
 

@@ -1,9 +1,7 @@
 <template>
-  <q-layout view="hhh LpR lff">
-
-    <q-header elevated class="bg-primary text-white" height-hint="98">
+  <q-layout class="bg-ev-light-green" view="hhh LpR lff">
+    <q-header elevated class="bg-ev-hard-green text-white" height-hint="98">
       <q-toolbar>
-
         <q-toolbar-title>
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
@@ -13,9 +11,9 @@
       </q-toolbar>
 
       <q-tabs align="justify">
-        <q-route-tab to="/page1" label="Home" />
-        <q-route-tab to="/page2" label="Sobre nós" />
-        <q-route-tab to="" label="Blog" />
+        <!-- Transformar em um looping -->
+        <q-route-tab to="/" label="Home" />
+        <q-route-tab to="/" label="Blog" />
         <q-route-tab to="/page4" label="Serviços" />
         <q-route-tab to="/page5" label="Produtos" />
       </q-tabs>
@@ -31,7 +29,6 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          <div>Title</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
@@ -40,7 +37,6 @@
 </template>
 
 <script setup>
-
 defineOptions({
   name: 'MainLayout'
 })
@@ -48,4 +44,12 @@ defineOptions({
 </script>
 
 <style lang="scss">
+.bg-ev-light-green {
+  background-color: #dde1ce;
+}
+
+.bg-ev-hard-green {
+  background-color: #2E5301;
+}
+
 </style>
