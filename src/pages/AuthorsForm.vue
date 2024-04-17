@@ -47,7 +47,7 @@ import { useStore } from 'vuex'
 
 export default {
   name: 'AuthorsForm',
-
+  // Tentar fazer no formato correto do options (mapGetters por ex)
   setup () {
     const store = useStore()
     return {

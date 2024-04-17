@@ -162,7 +162,7 @@ async function onSubmit () {
       selectedAuthor: state.selectedAuthor,
       image: state.image
     })
-    // onReset()
+    onReset()
   } catch (error) {
     console.error('Erro: ', error)
   }

@@ -14,8 +14,15 @@
       </div>
       <div class="q-my-lg">
         <div class="row q-mt-sm">
-          <div class="col-12 col-md-6 q-pr-sm q-mb-md">
-            <app-post-card />
+          <div v-for="post in store.state.posts.posts" :key="post.id" class="col-12 col-md-6 q-pr-sm q-mb-md">
+            <app-post-card
+              :title="post.title"
+              :small-description="post.smallDescription"
+              :category="post.category"
+              :publishing-date="post.publishingDate"
+              :selected-author="post.selectedAuthor"
+              :image="post.image"
+            />
           </div>
           <!-- Colocar no app card o col-6 -->
         </div>
@@ -27,22 +34,20 @@
 <script setup>
 import AppPostCard from '../components/AppPostCard.vue'
 import { useStore } from 'vuex'
-import { onMounted } from 'vue'
+import { onBeforeMount } from 'vue'
 
 defineOptions({ name: 'PostsList' })
 
 const store = useStore()
 
-onMounted(async () => {
+onBeforeMount(async () => {
   try {
     await store.dispatch('posts/fetchPosts')
-    // const authorsObject = store.state.authors.authors
-    // for (const authorObject in authorsObject) {
-    //   if (Object.hasOwnProperty.call(authorsObject, authorObject)) {
-    //     const author = authorsObject[authorObject]
-    //     state.authors.push(author.name)
-    //   }
-    // }
+    const posts = store.state.posts.posts
+    console.log(posts)
+    for (const post of posts) {
+      console.log(post)
+    }
   } catch (error) {
     console.error('Error fetching data: ', error)
   }

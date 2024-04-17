@@ -19,6 +19,11 @@
       "id": "e0b7",
       "name": "Teste4",
       "email": "Teste4"
+    },
+    {
+      "id": "345d",
+      "name": "Erick",
+      "email": "erickgrcosta@gmail.com"
     }
   ],
   "posts": [
@@ -31,6 +36,28 @@
       "publishingDate": "2023-01-01",
       "lastAlterationDate": "2022-02-01",
       "selectedAuthor": "Teste",
+      "image": "https://picsum.photos/600/400"
+    },
+    {
+      "id": "3338",
+      "title": "a",
+      "smallDescription": "a",
+      "content": "a",
+      "category": "s",
+      "publishingDate": "2222-02-06",
+      "lastAlterationDate": "0002-02-02",
+      "selectedAuthor": "Teste4",
+      "image": "https://picsum.photos/600/400"
+    },
+    {
+      "id": "059e",
+      "title": "a",
+      "smallDescription": "a",
+      "content": "a",
+      "category": "s",
+      "publishingDate": "2222-02-06",
+      "lastAlterationDate": "0002-02-02",
+      "selectedAuthor": "Teste4",
       "image": "https://picsum.photos/600/400"
     }
   ]
