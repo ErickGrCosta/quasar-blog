@@ -1,40 +1,37 @@
 {
   "authors": [
     {
-      "name": "Erick",
-      "email": "erick.costa@bild.com.br",
-      "test": "teste",
-      "id": "1c80"
+      "id": "0c26",
+      "name": "Teste",
+      "email": "Teste"
     },
     {
-      "newTest": "Mudei de novo",
-      "newItem": "Mudei",
-      "id": "b646"
+      "id": "fce0",
+      "name": "Teste2",
+      "email": "Teste2"
     },
     {
-      "id": "3862",
-      "newTest": "teste2"
+      "id": "ab59",
+      "name": "Teste2",
+      "email": "Teste2"
     },
     {
-      "id": "0880",
-      "newTest": "teste2"
-    },
-    {
-      "id": "b4e5",
-      "newTest": "teste2"
-    },
-    {
-      "id": "4727",
-      "newTest": "teste2"
-    },
-    {
-      "id": "7401",
-      "newTest": "teste2"
-    },
-    {
-      "id": "4b9b",
-      "newTest": "teste2"
+      "id": "e0b7",
+      "name": "Teste4",
+      "email": "Teste4"
     }
   ],
-  "posts": []
+  "posts": [
+    {
+      "id": "3f0b",
+      "title": "Titulo Teste",
+      "smallDescription": "Descrição Teste",
+      "content": "Conteúdo Teste",
+      "category": "Categoria Teste",
+      "publishingDate": "2023-01-01",
+      "lastAlterationDate": "2022-02-01",
+      "selectedAuthor": "Teste",
+      "image": "https://picsum.photos/600/400"
+    }
+  ]
 }

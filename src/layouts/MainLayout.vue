@@ -1,6 +1,6 @@
 <template>
-  <q-layout class="bg-ev-light-green" view="hhh LpR lff">
-    <q-header elevated class="bg-ev-hard-green text-white" height-hint="98">
+  <q-layout class="bg-light-green" view="hhh LpR lff">
+    <q-header elevated class="bg-hard-green text-white" height-hint="98">
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
@@ -14,8 +14,7 @@
         <!-- Transformar em um looping -->
         <q-route-tab to="/" label="Home" />
         <q-route-tab to="/" label="Blog" />
-        <q-route-tab to="/page4" label="Serviços" />
-        <q-route-tab to="/page5" label="Produtos" />
+        <q-route-tab to="/authors" label="Autores" />
       </q-tabs>
     </q-header>
 
@@ -44,12 +43,19 @@ defineOptions({
 </script>
 
 <style lang="scss">
-.bg-ev-light-green {
-  background-color: #dde1ce;
+.text-light-green {
+  background-color: #dde1ce !important;
 }
 
-.bg-ev-hard-green {
-  background-color: #2E5301;
+.bg-light-green {
+  background-color: #dde1ce !important;
 }
 
+.text-hard-green {
+  background-color: #2E5301 !important;
+}
+
+.bg-hard-green {
+  background-color: #2E5301 !important;
+}
 </style>

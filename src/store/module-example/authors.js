@@ -1,13 +1,15 @@
 import { api } from 'boot/axios'
-// Tentar tirar a repetição desses códigos, colocando dentro de um helpers por exemplo. Ver tudo o que tem de semelhante entre o authors e posts.
-// Deixar mais genérico também e ver alguma forma de tratar os erros (esse seria um plus).
+
 const state = {
   authors: []
 }
 
+const getters = {
+  getAuthorById: state => id => state.authors.find(author => author.id === id)
+}
+
 const mutations = {
   setAuthors (state, authors) {
-    console.log(authors)
     state.authors = authors
   },
 
@@ -30,7 +32,7 @@ const actions = {
   async fetchAuthors ({ commit }) {
     try {
       const { data } = await api.get('authors')
-      console.log(data)
+
       commit('setAuthors', data)
     } catch (error) {
       console.error('Error fetching authors:', error)
@@ -39,7 +41,6 @@ const actions = {
 
   async createAuthor ({ commit }, authorData) {
     try {
-      console.log(authorData)
       const { data } = await api.post('authors', authorData)
 
       commit('setAuthor', data)
@@ -71,6 +72,7 @@ const actions = {
 export default {
   namespaced: true,
   state,
+  getters,
   mutations,
   actions
 }

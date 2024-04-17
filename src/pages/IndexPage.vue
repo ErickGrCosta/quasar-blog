@@ -14,12 +14,12 @@
 </template>
 
 <script setup>
+import { useStore } from 'vuex'
+import { onMounted, computed, reactive } from 'vue'
+
 defineOptions({
   name: 'IndexPage'
 })
-
-import { useStore } from 'vuex'
-import { onMounted, computed, reactive } from 'vue'
 
 const state = reactive({
   authors: ''

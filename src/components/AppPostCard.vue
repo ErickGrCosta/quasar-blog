@@ -1,77 +1,88 @@
 <template>
-  <div class="app-post-card row rounded-borders full-height q-pa-md q-mb-md shadow-up-2">
+  <div class="app-post-card full-width row rounded-borders full-height q-pa-md q-mb-md shadow-up-8">
     <div class="app-post-card__image col-12 col-md-6">
-      <div class="app-post-card__category-tag absolute text-weight-bold text-white bg-red">
-        Category
-      </div>
+      <q-badge class="app-post-card__category-tag absolute text-weight-bold text-white bg-red q-mt-md q-py-sm q-px-md">
+        {{ props.category }}
+      </q-badge>
 
       <q-img
-        :src="image"
+        :src="props.image"
         :ratio="16/9"
       />
     </div>
+
     <div class="col-12 col-md-6 column justify-between">
         <!-- Title -->
-        <div class="app-post-card__contents column col-9 q-pa-sm">
-          <div class="text-h4 app-post-card__contents ellipsis col-3 bg-ev-light-gray rounded-borders content-center">
-            Títulooooooooooooooooooooooooooooooooooooooooooooooooo
+        <div class="app-post-card__contents full-width column col-9 q-pa-sm">
+          <div class="text-h4 app-post-card__contents full-width ellipsis col-3 bg-light-gray rounded-borders content-center">
+            {{ props.title }}
           </div>
+
           <!-- Description -->
-          <div class="app-post-card__contents flex justify-center items-center col-7">
-            Breve descriçãoooooooooooooooooooooo
+          <div class="app-post-card__contents full-width flex justify-center items-center col-7">
+            {{ props.smallDescription }}
           </div>
-          <!-- Data and Author -->
-          <div class=" row justify-between items-center col-2">
-            <div class="app-post-card__contents q-pl-md text-h6 col-9">
-              Erick Garcia Costaaaaa
+
+          <div class="app-post-card__break-spaces row justify-between items-center col-2">
+            <div class="app-post-card__break-spaces q-pl-md col-8">
+              {{ props.selectedAuthor }}
             </div>
 
-            <div class="app-post-card__contents q-pr-sm col-3">
-              06/04/2024
+            <div class="q-pr-sm col-4">
+              {{ props.publishingDate }}
             </div>
           </div>
         </div>
-        <!-- Button -->
+
         <div class="row justify-between col-3 items-end">
-          <q-btn icon="edit" rounded color="red q-ml-sm full-width" label="Editar o artigo"/>
-          <q-btn rounded color="primary full-width" label="Ler o artigo" :to="href"/>
-        </div>
+          <q-btn icon="edit" rounded color="red q-ml-sm full-width" label="Editar o artigo" />
 
+          <q-btn rounded color="primary full-width" label="Ler o artigo" :to="href" />
+        </div>
       </div>
   </div>
 </template>
 
 <script setup>
 const href = 'https://picsum.photos/'
-const image = 'https://picsum.photos/600/400'
 
 defineOptions({ name: 'AppPostCard' })
 
+const props = defineProps({
+  title: String,
+  smallDescription: String,
+  category: String,
+  publishingDate: String,
+  selectedAuthor: String,
+  image: String
+})
 </script>
 
 <style lang="scss">
 .app-post-card {
-  width: 100%;
+  &__break-spaces {
+    white-space: break-spaces;
+  }
 
   &__category-tag {
-    margin-top: 1rem;
-    padding: 0.4rem 1.1rem 0.4rem 0.8rem;
     z-index: 1;
     border-radius: 0 2rem 2rem 0;
   }
 
   &__contents {
-    max-width: 100%;
     word-break: break-word;
   }
 
   &__image {
     border-radius: 5px;
   }
-
 }
 
-.bg-ev-light-gray {
-  background-color: #ffffff80;
+.text-light-gray {
+  color: #ffffff80 !important;
+}
+
+.bg-light-gray {
+  background: #ffffff80 !important;
 }
 </style>
