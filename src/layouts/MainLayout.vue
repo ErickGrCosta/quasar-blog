@@ -11,10 +11,7 @@
       </q-toolbar>
 
       <q-tabs align="justify">
-        <!-- Transformar em um looping -->
-        <q-route-tab to="/" label="Home" />
-        <q-route-tab to="/" label="Blog" />
-        <q-route-tab to="/authors" label="Autores" />
+        <q-route-tab  v-for="(route, index) in routes" :key="index" :to="route.path" :label="route.label" />
       </q-tabs>
     </q-header>
 
@@ -40,22 +37,14 @@ defineOptions({
   name: 'MainLayout'
 })
 
+const routes = [
+  {
+    path: '/',
+    label: 'Home'
+  },
+  {
+    path: '/authors',
+    label: 'Autores'
+  }
+]
 </script>
-
-<style lang="scss">
-.text-light-green {
-  background-color: #dde1ce !important;
-}
-
-.bg-light-green {
-  background-color: #dde1ce !important;
-}
-
-.text-hard-green {
-  background-color: #2E5301 !important;
-}
-
-.bg-hard-green {
-  background-color: #2E5301 !important;
-}
-</style>

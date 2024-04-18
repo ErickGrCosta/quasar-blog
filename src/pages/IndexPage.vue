@@ -15,15 +15,13 @@
 
 <script setup>
 import { useStore } from 'vuex'
-import { onMounted, computed, reactive } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 
 defineOptions({
   name: 'IndexPage'
 })
 
-const state = reactive({
-  authors: ''
-})
+const authors = ref('')
 
 const store = useStore()
 
@@ -35,9 +33,8 @@ onMounted(() => getItens())
 
 async function getItens () {
   try {
-    console.log(store)
     await store.dispatch('authors/fetchAuthors')
-    state.authors = store.state.authors
+    authors.value = store.state.authors
   } catch (error) {
     console.error('Error fetching data: ', error)
   }

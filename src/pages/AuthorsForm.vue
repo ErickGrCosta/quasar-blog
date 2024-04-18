@@ -1,39 +1,26 @@
 <template>
   <q-page class="flex justify-center">
     <div class="full-width q-px-xl">
-      <div class="row justify-between">
+      <div>
         <h1 class="q-my-lg">Página de criação de Autor</h1>
       </div>
+
       <div class="q-my-lg">
-        <div class="q-pa-md" style="max-width: 25rem">
-          <q-form
-            @submit="onSubmit"
-            @reset="onReset"
-            class="q-col-gutter-md column"
+        <div class="q-pa-md max-width-25rem">
+          <q-form @submit="onSubmit" @reset="reset" class="q-col-gutter-md column"
           >
             <q-input
-              filled
-              v-model="name"
-              label="Nome"
-              hint="Nome do autor"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor, digite algo']"
+              v-model="values.name" label="Nome" hint="Nome completo do autor" v-bind="inputProps"
             />
 
             <q-input
-              filled
-              v-model="email"
-              type="email"
-              label="Email"
-              hint="Email do autor"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Por favor, digite algo']"
+              v-model="values.email" type="email" label="Email" hint="Melhor email do autor" v-bind="inputProps"
             />
 
             <div class="full-width">
-              <q-btn label="Submit" type="submit" color="primary"/>
+              <q-btn label="Enviar" type="submit" color="primary" />
 
-              <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+              <q-btn label="Resetar" type="reset" color="primary" flat class="q-ml-sm" />
             </div>
           </q-form>
         </div>
@@ -43,40 +30,49 @@
 </template>
 
 <script>
-import { useStore } from 'vuex'
+import { mapActions } from 'vuex'
+import { inputProps } from 'src/utils'
+import { Notify } from 'quasar'
 
 export default {
+
   name: 'AuthorsForm',
-  // Tentar fazer no formato correto do options (mapGetters por ex)
-  setup () {
-    const store = useStore()
-    return {
-      store
-    }
-  },
 
   data () {
     return {
-      name: '',
-      email: ''
+      values: {
+        name: '',
+        email: ''
+      }
     }
   },
 
   methods: {
-    async onSubmit () {
+    ...mapActions('authors', ['createAuthor']),
+
+    onSubmit () {
       try {
-        await this.store.dispatch('authors/createAuthor', {
-          name: this.name,
-          email: this.email
+        this.createAuthor({
+          name: this.values.name,
+          email: this.values.email
         })
-        this.onReset()
+
+        Notify.create('Autor criado com sucesso!')
+        this.reset()
       } catch (error) {
-        console.error('Erro: ', error)
+        Notify.create(error)
       }
     },
-    onReset () {
-      this.name = ''
-      this.email = ''
+
+    reset () {
+      this.values.name = ''
+      this.values.email = ''
+    }
+  },
+
+  computed: {
+    inputProps () {
+      return inputProps
     }
   }
 }
