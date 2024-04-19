@@ -94,9 +94,7 @@ export default {
         }
 
         this.reset()
-
         Notify.create('Autor criado com sucesso!')
-        this.reset()
       } catch (error) {
         Notify.create(error)
       }
