@@ -15,7 +15,7 @@
         <!-- Title -->
         <div class="app-post-card__content full-width column col-9 q-pa-sm">
           <div class="full-width col-3 bg-light-gray rounded-borders content-center">
-            <h4 class="ellipsis"> {{ props.title }} </h4>
+            <h4 class="ellipsis">{{ props.title }}</h4>
           </div>
 
           <!-- Description -->
@@ -24,7 +24,7 @@
           </div>
 
           <div class="app-post-card break-spaces row justify-between items-center col-2">
-            <div class="app-post-card break-spaces q-pl-md col-8">
+            <div class="break-spaces q-pl-md col-8">
               {{ props.selectedAuthor }}
             </div>
 
@@ -80,9 +80,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-.break-spaces {
-  white-space: break-spaces;
-}
 
 .app-post-card {
   &__category {

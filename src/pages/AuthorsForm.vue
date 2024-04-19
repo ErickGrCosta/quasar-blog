@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex justify-center">
     <div class="full-width q-px-xl">
-        <h1 class="q-my-lg">Página de criação de Autor</h1>
+      <h1 class="q-my-lg">Página de criação de Autor</h1>
 
       <div class="q-my-lg">
         <div class="q-pa-md max-width-25rem">

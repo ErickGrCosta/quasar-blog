@@ -4,8 +4,7 @@
       <h1 class="q-my-lg">Página de criação de Post</h1>
       <div class="q-my-lg">
         <div class="q-pa-md max-width-25rem">
-          <q-form @submit="onSubmit" @reset="reset" class="q-col-gutter-md column"
-          >
+          <q-form @submit="onSubmit" @reset="reset" class="q-col-gutter-md column">
             <q-input
               v-model="formValues.title"
               label="Título"
@@ -126,6 +125,7 @@ async function onSubmit () {
 
 function reset () {
   const valuesToReset = ['title', 'smallDescription', 'content', 'category', 'publishingDate', 'lastAlterationDate', 'selectedAuthor', 'image']
+
   valuesToReset.forEach((item) => {
     formValues.value[item] = ''
   })
