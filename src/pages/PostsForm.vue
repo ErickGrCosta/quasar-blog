@@ -2,6 +2,7 @@
   <q-page class="flex justify-center">
     <div class="full-width q-px-xl">
       <h1 class="q-my-lg">Página de criação de Post</h1>
+
       <div class="q-my-lg">
         <div class="q-pa-md max-width-25rem">
           <q-form @submit="onSubmit" @reset="reset" class="q-col-gutter-md column">
@@ -10,7 +11,7 @@
               label="Título"
               :maxlength="50"
               hint="Título da publicação"
-              v-bind="inputProps"
+              v-bind="rulesProps"
             />
 
             <q-input
@@ -18,14 +19,14 @@
               label="Breve Descrição"
               hint="Breve Descrição que ficará visível no card"
               :maxlength="86"
-              v-bind="inputProps"
+              v-bind="rulesProps"
             />
 
             <q-input
               v-model="formValues.content"
               label="Conteúdo do texto"
               hint="Conteúdo central da publicação"
-              v-bind="inputProps"
+              v-bind="rulesProps"
             />
 
             <q-input
@@ -33,7 +34,7 @@
               label="Categoria"
               hint="Categoria da publicação"
               :maxlength="20"
-              v-bind="inputProps"
+              v-bind="rulesProps"
             />
 
             <q-input
@@ -41,7 +42,7 @@
               type="date"
               label="Data de publicação"
               hint="Data de publicação"
-              v-bind="inputProps"
+              v-bind="rulesProps"
             />
 
             <q-input
@@ -49,7 +50,7 @@
               type="date"
               label="Data da última alteração"
               hint="Data da última alteração"
-              v-bind="inputProps"
+              v-bind="rulesProps"
             />
 
             <q-select
@@ -65,7 +66,7 @@
               type="url"
               label="Imagem"
               hint="URL da imagem a ser exibida"
-              v-bind="inputProps"
+              v-bind="rulesProps"
             />
 
             <div class="full-width">
@@ -83,10 +84,10 @@
 <script setup>
 import { useStore } from 'vuex'
 import { computed, onMounted, ref } from 'vue'
-import { inputProps } from 'src/utils'
+import { rulesProps } from 'src/utils'
 import { Notify } from 'quasar'
 
-defineOptions({ name: 'PostForm' })
+defineOptions({ name: 'PostsForm' })
 
 const store = useStore()
 
@@ -103,7 +104,9 @@ const formValues = ref({
 
 const authors = computed(() => store.state.authors.authors)
 
-onMounted(async () => {
+onMounted(() => fetchAuthors())
+
+async function fetchAuthors () {
   try {
     await store.dispatch('authors/fetchAuthors')
 
@@ -111,7 +114,7 @@ onMounted(async () => {
   } catch (error) {
     Notify.create(error)
   }
-})
+}
 
 async function onSubmit () {
   try {
@@ -124,10 +127,8 @@ async function onSubmit () {
 }
 
 function reset () {
-  const valuesToReset = ['title', 'smallDescription', 'content', 'category', 'publishingDate', 'lastAlterationDate', 'selectedAuthor', 'image']
-
-  valuesToReset.forEach((item) => {
-    formValues.value[item] = ''
+  Object.keys(formValues.value).forEach(key => {
+    formValues.value[key] = ''
   })
 }
 

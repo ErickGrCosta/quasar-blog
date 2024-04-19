@@ -5,10 +5,7 @@
         {{ props.category }}
       </q-badge>
 
-      <q-img
-        :src="props.image"
-        :ratio="16/9"
-      />
+      <q-img :src="props.image" :ratio="16/9" />
     </div>
 
     <div class="col-12 col-md-6 column justify-between">
@@ -80,7 +77,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-
 .app-post-card {
   &__category {
     z-index: 1;

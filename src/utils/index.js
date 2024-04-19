@@ -1,1 +1,1 @@
-export { inputProps } from './required'
+export { rulesProps } from './rules'

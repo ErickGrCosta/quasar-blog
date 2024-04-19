@@ -5,15 +5,10 @@
 
       <div class="q-my-lg">
         <div class="q-pa-md max-width-25rem">
-          <q-form @submit="onSubmit" @reset="reset" class="q-col-gutter-md column"
-          >
-            <q-input
-              v-model="values.name" label="Nome" hint="Nome completo do autor" v-bind="inputProps"
-            />
+          <q-form @submit="onSubmit" @reset="reset" class="q-col-gutter-md column" >
+            <q-input v-model="values.name" label="Nome" hint="Nome completo do autor" v-bind="rulesProps" />
 
-            <q-input
-              v-model="values.email" type="email" label="Email" hint="Melhor email do autor" v-bind="inputProps"
-            />
+            <q-input v-model="values.email" type="email" label="Email" hint="Melhor email do autor" v-bind="rulesProps" />
 
             <div class="full-width">
               <q-btn label="Enviar" type="submit" color="primary" />
@@ -29,7 +24,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { inputProps } from 'src/utils'
+import { rulesProps } from 'src/utils'
 import { Notify } from 'quasar'
 
 export default {
@@ -68,8 +63,8 @@ export default {
   },
 
   computed: {
-    inputProps () {
-      return inputProps
+    rulesProps () {
+      return rulesProps
     }
   }
 }
