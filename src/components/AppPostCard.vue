@@ -6,7 +6,8 @@
       </q-badge>
 
       <q-img
-        :src="props.image" :ratio="16/9"
+        :src="props.image"
+        :ratio="16/9"
       />
     </div>
 
@@ -36,7 +37,7 @@
         <div class="row justify-between col-3 items-end">
           <q-btn icon="edit" rounded color="red q-ml-sm full-width" label="Editar o artigo" />
 
-          <q-btn rounded color="primary full-width" label="Ler o artigo" to="" />
+          <q-btn rounded color="primary full-width" label="Ler o artigo" />
         </div>
       </div>
   </div>

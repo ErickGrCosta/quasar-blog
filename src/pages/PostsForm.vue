@@ -1,10 +1,7 @@
 <template>
   <q-page class="flex justify-center">
     <div class="full-width q-px-xl">
-      <div>
-        <h1 class="q-my-lg">Página de criação de Post</h1>
-      </div>
-
+      <h1 class="q-my-lg">Página de criação de Post</h1>
       <div class="q-my-lg">
         <div class="q-pa-md max-width-25rem">
           <q-form @submit="onSubmit" @reset="reset" class="q-col-gutter-md column"
@@ -56,7 +53,13 @@
               v-bind="inputProps"
             />
 
-            <q-select v-model="formValues.selectedAuthor" map-options emit-value option-value="id" :options="authors" option-label="name" label="Autores" />
+            <q-select
+              v-model="formValues.selectedAuthor"
+              map-options emit-value option-value="id"
+              :options="authors"
+              option-label="name"
+              label="Autores"
+            />
 
             <q-input
               v-model="formValues.image"
@@ -122,15 +125,10 @@ async function onSubmit () {
 }
 
 function reset () {
-  formValues.value.title = ''
-  formValues.value.smallDescription = ''
-  formValues.value.content = ''
-  formValues.value.category = ''
-  formValues.value.publishingDate = ''
-  formValues.value.lastAlterationDate = ''
-  formValues.value.selectedAuthor = ''
-  formValues.value.image = ''
-  formValues.value.authors = ''
+  const valuesToReset = ['title', 'smallDescription', 'content', 'category', 'publishingDate', 'lastAlterationDate', 'selectedAuthor', 'image']
+  valuesToReset.forEach((item) => {
+    formValues.value[item] = ''
+  })
 }
 
 </script>

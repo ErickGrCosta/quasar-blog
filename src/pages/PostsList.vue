@@ -13,9 +13,7 @@
       <div class="q-my-lg">
         <div class="row q-mt-sm q-col-gutter-md">
           <div v-for="post in posts" :key="post.id" class="col-12 col-md-6 q-pr-sm q-mb-md">
-            <app-post-card
-              v-bind="post"
-            />
+            <app-post-card v-bind="post" />
           </div>
 
         </div>

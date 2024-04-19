@@ -34,6 +34,7 @@ onMounted(() => getItens())
 async function getItens () {
   try {
     await store.dispatch('authors/fetchAuthors')
+
     authors.value = store.state.authors
   } catch (error) {
     console.error('Error fetching data: ', error)
