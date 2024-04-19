@@ -4,6 +4,10 @@ const state = {
   posts: []
 }
 
+const getters = {
+  getPostById: state => id => state.posts.find(post => post.id === id)
+}
+
 const mutations = {
   setPosts (state, posts) {
     state.posts = posts
@@ -68,6 +72,7 @@ const actions = {
 export default {
   namespaced: true,
   state,
+  getters,
   mutations,
   actions
 }
