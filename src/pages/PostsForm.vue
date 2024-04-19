@@ -109,8 +109,6 @@ onMounted(() => fetchAuthors())
 async function fetchAuthors () {
   try {
     await store.dispatch('authors/fetchAuthors')
-
-    Notify.create('Post criado com sucesso!')
   } catch (error) {
     Notify.create(error)
   }
@@ -120,6 +118,7 @@ async function onSubmit () {
   try {
     await store.dispatch('posts/createPost', formValues.value)
 
+    Notify.create('Post criado com sucesso!')
     reset()
   } catch (error) {
     Notify.create(error)

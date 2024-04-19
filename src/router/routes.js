@@ -19,6 +19,11 @@ const routes = [
         component: () => import('src/pages/AuthorsForm.vue')
       },
       {
+        path: '/authors/edit/:id',
+        name: 'AuthorsEdit',
+        component: () => import('src/pages/AuthorsForm.vue')
+      },
+      {
         path: '/new',
         name: 'PostCreate',
         component: () => import('src/pages/PostsForm.vue')

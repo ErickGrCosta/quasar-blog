@@ -14,6 +14,22 @@
               <q-btn label="Enviar" type="submit" color="primary" />
 
               <q-btn label="Resetar" type="reset" color="primary" flat class="q-ml-sm" />
+
+              <q-btn @click="confirm = true" v-if="!this.isCreateMode" label="Deletar" color="red" class="q-ml-sm" />
+
+              <q-dialog v-model="confirm" persistent>
+                <q-card>
+                  <q-card-section>
+                    <span>Tem certeza que quer deletar o autor?</span>
+                  </q-card-section>
+
+                  <q-card-actions align="right">
+                    <q-btn flat label="Cancelar" color="primary" v-close-popup />
+
+                    <q-btn flat label="Confirmar" color="primary" v-close-popup @click="this.delete(this.values.id)"/>
+                  </q-card-actions>
+                </q-card>
+              </q-dialog>
             </div>
           </q-form>
         </div>
@@ -23,7 +39,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { rulesProps } from 'src/utils'
 import { Notify } from 'quasar'
 
@@ -33,21 +49,51 @@ export default {
   data () {
     return {
       values: {
+        id: '',
         name: '',
         email: ''
-      }
+      },
+      isCreateMode: true,
+      confirm: false
     }
   },
 
+  async created () {
+    this.values.id = this.$route.params.id
+    this.isCreateMode = this.$route.name !== 'AuthorsEdit'
+    await this.fetchAuthors()
+    if (this.values.id) this.retrieveAuthorById(this.values.id)
+  },
+
   methods: {
-    ...mapActions('authors', ['createAuthor']),
+    ...mapGetters('authors', ['getAuthorById']),
+    ...mapActions('authors', ['createAuthor', 'fetchAuthors', 'updateAuthor', 'deleteAuthor']),
+
+    retrieveAuthorById (authorId) {
+      const getAuthorByIdFn = this.getAuthorById()
+      const { name, email } = getAuthorByIdFn(authorId)
+      this.values.name = name
+      this.values.email = email
+    },
 
     onSubmit () {
       try {
-        this.createAuthor({
-          name: this.values.name,
-          email: this.values.email
-        })
+        if (this.isCreateMode) {
+          this.createAuthor({
+            name: this.values.name,
+            email: this.values.email
+          })
+        } else {
+          this.updateAuthor({
+            authorId: this.values.id,
+            payload: {
+              name: this.values.name,
+              email: this.values.email
+            }
+          })
+        }
+
+        this.reset()
 
         Notify.create('Autor criado com sucesso!')
         this.reset()
@@ -59,6 +105,11 @@ export default {
     reset () {
       this.values.name = ''
       this.values.email = ''
+    },
+
+    delete (authorId) {
+      this.deleteAuthor(authorId)
+      this.$router.push({ name: 'AuthorsList' })
     }
   },
 

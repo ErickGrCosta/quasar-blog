@@ -32,7 +32,6 @@ const actions = {
   async fetchAuthors ({ commit }) {
     try {
       const { data } = await api.get('authors')
-
       commit('setAuthors', data)
     } catch (error) {
       console.error('Error fetching authors:', error)
